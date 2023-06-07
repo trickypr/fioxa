@@ -176,6 +176,8 @@ pub fn terminal() {
                             let buf = read_file(file.location);
 
                             let pid = load_elf(&buf, args.to_string());
+                            // HACK: force it to get keyboard events
+                            stream::subscribe_pid(*KB_STREAM_ID.get().unwrap(), pid);
 
                             while TASKMANAGER.lock().processes.contains_key(&pid) {
                                 yield_now();

@@ -59,6 +59,13 @@ pub fn subscribe(id: StreamId) {
         .and_then(|v| Some(v.subscribers.push(pid)));
 }
 
+pub fn subscribe_pid(id: StreamId, pid: PID) {
+    STREAMS
+        .lock()
+        .get_mut(&id)
+        .and_then(|v| Some(v.subscribers.push(pid)));
+}
+
 pub fn push(message: StreamMessage) {
     let id = StreamId::from(message.stream_id);
     let pid = get_task_mgr_current_pid();
