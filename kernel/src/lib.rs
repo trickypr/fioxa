@@ -43,6 +43,7 @@ pub mod stream;
 pub mod syscall;
 pub mod terminal;
 pub mod time;
+pub mod tsk;
 pub mod uefi;
 
 pub static mut BOOT_INFO: *const BootInfo = 0 as *const BootInfo;

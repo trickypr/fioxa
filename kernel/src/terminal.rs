@@ -194,6 +194,12 @@ pub fn terminal() {
                 uptime /= 60;
                 println!("Up: {:02}:{:02}:{:02}", uptime, minutes, seconds)
             }
+            "graphics" => {
+                crate::tsk::tsk();
+                loop {
+                    yield_now();
+                }
+            }
             _ => {
                 println!("{command}: command not found")
             }
